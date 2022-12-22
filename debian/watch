@@ -1,0 +1,5 @@
+version=4
+opts=\
+dversionmangle=s/\+(debian|dfsg|ds|deb)(\.\d+)?$//,\
+filenamemangle=s/.*\/v?([\d\.-]+)\.tar\.gz/node-unicode-loose-match-$1.tar.gz/ \
+ https://github.com/mathiasbynens/unicode-loose-match/tags .*/v?([\d\.]+).tar.gz

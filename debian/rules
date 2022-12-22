@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+dist/scripts/build.js: scripts/build.js
+	mkdir -p "$(dir $@)"
+	sed -E -e "s,require[(]'unicode-([[:digit:]]+([.])?)+'[)],require('../../debian/BinaryProperty'),g" "$<" > "$@"
+
+dist/data/mapping.js: dist/scripts/build.js
+	mkdir -p "$(dir $@)"
+	(cd dist && node scripts/build.js)
+
+dist/index.js: index.js
+	mkdir -p "$(dir $@)"
+	cp -f "$<" "$@"
+
+override_dh_auto_build: dist/index.js dist/data/mapping.js
+
+dist/scripts/smoketest.js: debian/smoketest.js
+	mkdir -p "$(dir $@)"
+	cp -f "$<" "$@"
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+override_dh_auto_test: dist/scripts/smoketest.js
+	node "dist/scripts/smoketest.js"
+else
+override_dh_auto_test:
+endif
+
+override_dh_auto_clean:
+	rm -rf dist
+	dh_auto_clean

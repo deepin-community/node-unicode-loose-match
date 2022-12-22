@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+exec 4>&1
+error_sed=$( ( (sed -e "s/\.\./unicode-loose-match/g" < debian/smoketest.js ; echo $? >&3)  | node ) 3>&1 >&4)
+exec 4>&-
+test "X$error_sed" = "X0"

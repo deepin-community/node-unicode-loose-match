@@ -1,0 +1,40 @@
+{
+  "name": "unicode-loose-match",
+  "version": "2.5.0",
+  "description": "A JavaScript implementation of Unicode loose matching.",
+  "homepage": "https://github.com/mathiasbynens/unicode-loose-match",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "LICENSE-MIT.txt",
+    "index.js",
+    "data/mappings.js"
+  ],
+  "keywords": [
+    "unicode",
+    "loose matching"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mathiasbynens/unicode-loose-match.git"
+  },
+  "bugs": "https://github.com/mathiasbynens/unicode-loose-match/issues",
+  "devDependencies": {
+    "ava": "*",
+    "jsesc": "^2.5.1",
+    "unicode-11.0.0": "^0.7.7",
+    "unicode-property-aliases": "^1.3.0",
+    "unicode-property-value-aliases": "^3.3.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "ava ./tests"
+  }
+}

@@ -1,0 +1,5 @@
+Tests: require
+Depends: node-unicode-loose-match, nodejs (>= 6.11.2~)
+
+Tests: smoketest
+Depends: node-unicode-loose-match, nodejs (>= 6.11.2~), node-lodash (>= 4.0)
